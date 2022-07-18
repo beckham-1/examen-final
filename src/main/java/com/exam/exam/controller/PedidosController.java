@@ -4,17 +4,21 @@
  */
 package com.exam.exam.controller;
 
-import com.exam.exam.entity.Categoria;
-import com.exam.exam.serviceImpl.CategoriaService;
+import com.exam.exam.entity.Pedidos;
+
+import com.exam.exam.serviceImpl.PedidosService;
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,50 +27,52 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author Noodlexz.CD
  */
 @Controller
-@RequestMapping("/cate")
-public class CateController {
+@RequestMapping("/pedidos")
+public class PedidosController {
 
     @Autowired
-    private CategoriaService categoriaService;
+    private PedidosService pedidosService;
 
     @GetMapping("/all")
-    public String listarCate(Model model) {
-        model.addAttribute("categorias", categoriaService.readAll());
-        return "/cate/listarCate";
+    public String listarPedidos(Model model) {
+        model.addAttribute("pedidos", pedidosService.readAll());
+        return "/pedidos/listarPedidos";
     }
 
     @PostMapping("/{id}")
     public String readCate(Model model, @PathVariable("id") Integer idcat) {
-        model.addAttribute("cate", categoriaService.read(idcat));
+        model.addAttribute("cate", pedidosService.read(idcat));
 
-        return "redirect:/cate";
+        return "redirect:/pedidos";
     }
 
     @PostMapping("/add")
-    public String saveCate(@Valid @ModelAttribute Categoria cat, BindingResult result, Model model, RedirectAttributes attributes) {
-        categoriaService.create(cat);
+    public String saveCate(@Valid @ModelAttribute Pedidos ped, BindingResult result, Model model, RedirectAttributes attributes) {
+        pedidosService.create(ped);
         //model.addAttribute("categorias", categoriaService.readAll());
-        return "redirect:/cate/all";
+        return "redirect:/pedidos/all";
     }
 
     @GetMapping("/form")
     public String createCate(Model model) {
-        model.addAttribute("titulo", "Registrar Categoría");
-        model.addAttribute("categoria", new Categoria());
-        return "cate/formCate";
+        model.addAttribute("titulo", "Registrar Pedido");
+        model.addAttribute("icon", "<i class=\"fa-solid fa-cart-plus\"></i>");
+        model.addAttribute("pedidos", new Pedidos());
+        return "pedidos/formPedidos";
     }
 
     @GetMapping("/del/{id}")
-    public String deleteCate(Model model, @PathVariable("id") Integer idcat) {
-        categoriaService.delete(idcat);
-        return "redirect:/cate/all";
+    public String deleteCate(Model model, @PathVariable("id") Integer idped) {
+        pedidosService.delete(idped);
+        return "redirect:/pedidos/all";
     }//PUT,PATCH,GET;DELETE,POST
 
     @GetMapping("/edit/{id}")
-    public String editCate(Model model, @PathVariable("id") Integer idcat) {
-        Categoria categoria = categoriaService.read(idcat);
-        model.addAttribute("titulo", "Modificar Categoría");
-        model.addAttribute("categoria", categoria);
-        return "cate/formCate";
+    public String editCate(Model model, @PathVariable("id") Integer idped) {
+        Pedidos pedidos = pedidosService.read(idped);
+        model.addAttribute("titulo", "Modificar Pedido");
+        model.addAttribute("pedidos", pedidos);
+        return "pedidos/formPedidos";
     }
+
 }

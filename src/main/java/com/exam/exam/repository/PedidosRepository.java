@@ -4,7 +4,7 @@
  */
 package com.exam.exam.repository;
 
-import com.exam.exam.entity.Escuela;
+import com.exam.exam.entity.Pedidos;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author Noodlexz.CD
  */
 @Repository
-public interface EscuelaRepository extends JpaRepository<Escuela, Integer>{
+public interface PedidosRepository extends JpaRepository<Pedidos, Integer>{
     
 }

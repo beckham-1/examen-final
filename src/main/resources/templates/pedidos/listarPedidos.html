@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      >
+    <head th:replace="layout/layout :: head">
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS only -->
+        <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    </head>
+    <body class="bg-dark text-light">
+        <div class="container" layout:fragment="page-content">    
+            <div class="container mt-5">
+
+                <div> <h1>Pedidos <i class="fa-solid fa-cart-shopping"></i></h1> 
+                </div>
+                <hr>
+                <a th:href="@{/pedidos/form}" class="btn btn-info mb-5">Nuevo pedido</a>
+                <table class="table-primary table table-striped table-dark rounded">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">CLIENTE</th>
+                            <th scope="col">FECHA</th>
+                            <th scope="col">REPARTO</th>
+                            <th scope="col">PRODUCTO</th>
+                            <th scope="col">CANTIDAD</th>
+                            <th scope="col">PRECIO</th>
+
+
+                            <th scope="col" colspan="2">ACCION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="ped :${pedidos}">
+                            <th scope="row">1</th>
+                            <td th:text="${ped.id}"></td>
+                            <td th:text="${ped.cliente}"></td>
+                            <td th:text="${ped.fecha}"></td>
+                            <td th:text="${ped.reparto}"></td>
+                            <td th:text="${ped.producto}"></td>
+                            <td th:text="${ped.cantidad}"></td> 
+                            <td th:text="${ped.precio}"></td>
+
+                            <td>
+                                <a th:href="@{/pedidos/edit/} + ${ped.id}" title="Editar Registro"><i class="fa-solid fa-pencil text-warning"></i></a>
+                                <a th:href="@{/pedidos/del/} + ${ped.id}" title="Eliminar Registro"><i class="fa-solid fa-ban text-danger"></i></a>
+                            </td>
+                        </tr>                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </body>
+</html>

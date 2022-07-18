@@ -6,11 +6,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <head th:fragment="head">
-        <title>TODO supply a title</title>
+        <title>PEDIDOS</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/82a228b425.js" crossorigin="anonymous"></script>
-        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+        <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     </head>
     <body>
        <nav class="navbar navbar-expand-lg bg-light">
@@ -37,6 +38,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" th:href="@{cate/all}">Categoria</a></li>
             <li><a class="dropdown-item" th:href="@{escuela/all}">Escuela</a></li>
+             <li><a class="dropdown-item" th:href="@{pedidos/all}">Pedidos</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
@@ -49,8 +51,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
           <div class="container-fluid" layout:fragment="page-content">
 
            </div>
-        
-        <script th:src="@{/js/bootstrap.min.js}"></script>
-        <script th:src="@{/js/bootstrap.bundle.js}"></script>
+       <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     </body>
 </html>
